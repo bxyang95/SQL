@@ -1,0 +1,29 @@
+CREATE DATABASE Storedb
+
+CREATE TABLE [dbo].[Customers](
+	[CustomerID] [int] NOT NULL,
+	[First_Name] [varchar](255) NULL,
+	[Last_Name] [varchar](255) NULL,
+	[Address] [varchar](255) NULL,
+	[City] [varchar](255) NULL,
+	[State] [varchar](255) NULL; 
+
+CREATE TABLE [dbo].[Employees](
+	[Employee_ID] [int] NOT NULL,
+	[First_Name] [varchar](50) NOT NULL,
+	[Last_Name] [varchar](50) NULL,
+	[Salary] [money] NULL; 
+
+CREATE TABLE [dbo].[Products](
+	[Product_ID] [int] NOT NULL,
+	[Product_Name] [varchar](255) NULL,
+	[Product_Category] [varchar](255) NULL,
+	[Product_Price] [varchar](255) NULL;
+  
+CREATE TABLE [dbo].[Transactions](
+	[Trans_Numb] [int] NOT NULL,
+	[Trans_ID] [varchar](255) NOT NULL,
+	[Customer_ID] [varchar](255) NOT NULL,
+	[Items_Sold] [varchar](255) NOT NULL,
+	[Trans_Date] [date] NOT NULL,
+	[Trans_Time] [time](7) NULL;
