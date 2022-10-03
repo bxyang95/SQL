@@ -1,0 +1,33 @@
+CREATE TABLE Actor
+(id integer PRIMARY KEY, firstname text, lastname text, email text, pair_id integer, birthdate text);
+INSERT INTO Actor VALUES (1, 'John', 'Krasinksi', 'John@Krasinski.com', 2, '10-20-1979'), (2, 'Emily', 'Blunt', 'Emily@Blunt.com', 1, '02-23-1983'), (3, 'Goldie', 'Hawn', 'Goldie@Hawn.com', 4, '11-21-1945'), (4, 'Kurt', 'Russell', 'Kurt@Russell.com', 3,'03-17-1951'), (5, 'Melissa', 'McCarthy', 'Melissa@McCarthy.com', 6, '08-26-1970'), (6, 'Ben', 'Falcone', 'Ben@Falcone.com', 5, '08-25-1973'), (7, 'Leonardo', 'DiCaprio', 'Leonardo@DiCaprio.com', NULL,'11-11-1974'), (8, 'Morgan', 'Freeman', 'Morgan@Freeman.com', NULL,' 06-01-1937'), (9, 'Matt', 'Damon', 'Matt@Damon.com', NULL, '10-08-1970'), (10, 'Samuel', 'Jackson', 'Samuel@Jackson.com', NULL,  '12-21-1948'); 
+
+CREATE TABLE ActorMovies
+(id integer PRIMARY KEY, actorid integer, movietitle text);
+INSERT INTO ActorMovies VALUES (1, 1, 'A Quiet Place'), (2, 2, 'A Quiet Place'), (3, 3, 'The Christmas Chronicles'), (4, 4, 'The Christmas Chronicles'), (5, 5, 'Bridesmaids'), (6, 6, 'Bridesmaids'), (7, 7, 'Catch Me If You Can'), (8, 8, 'The Shawshank Redemption'), (9, 9, 'Will Hunting'), (10, 10, 'The Incredibles'); 
+
+CREATE TABLE ActorPairs
+(id integer PRIMARY KEY, pair1_id integer, pair2_id integer);
+INSERT INTO ActorPairs VALUES (1, 1, 2), (2, 3, 4), (3, 5, 6), (4, 7, NULL), (5, 8, NULL), (6, 9, NULL), (7, 10, NULL); 
+
+CREATE TABLE Character
+(id integer PRIMARY KEY, fullname text, movie text);
+
+INSERT INTO Character VALUES (  1, 'Lee Abbot', 'A Qiet Place'), (2, 'Evelyn Abbot', 'A Qiet Place'), (3, 'Santa', 'The Christmas Chronicles'), (4, 'Mrs. Claus', 'The Christmas Chronicles'), (5, 'Megan', 'Bridesmaids'), (6, 'Air Marshall Jon', 'Bridesmaids'), (7, 'Frank Abagnale Jr.', 'Catch Me If You Can'), (8, 'Ellis Boyd Redding', 'The Shawshank Redemption'), (9, 'Will Hunting', 'Will Hunting'), (10, 'Frozone', 'The Incredibles');
+
+SELECT Actor.firstname, Actor.lastname, ActorMovies.movietitle
+FROM Actor
+LEFT OUTER JOIN ActorMovies
+ON Actor.id = ActorMovies.actorid;
+
+SELECT Actor.firstname, Actor.lastname, pair.email
+FROM Actor
+JOIN Actor pair
+ON Actor.pair_id = pair.id;
+
+SELECT Character.fullname, ActorMovies.movietitle, Actor.firstname, Actor.lastname
+FROM Character
+JOIN ActorMovies
+ON Character.id = ActorMovies.id
+JOIN Actor
+ON Character.id = Actor.id;
