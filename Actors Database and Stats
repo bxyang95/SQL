@@ -15,16 +15,19 @@ CREATE TABLE Character
 
 INSERT INTO Character VALUES (1, 'Lee Abbot', 'A Qiet Place'), (2, 'Evelyn Abbot', 'A Qiet Place'), (3, 'Santa', 'The Christmas Chronicles'), (4, 'Mrs. Claus', 'The Christmas Chronicles'), (5, 'Megan', 'Bridesmaids'), (6, 'Air Marshall Jon', 'Bridesmaids'), (7, 'Frank Abagnale Jr.', 'Catch Me If You Can'), (8, 'Ellis Boyd Redding', 'The Shawshank Redemption'), (9, 'Will Hunting', 'Will Hunting'), (10, 'Frozone', 'The Incredibles'), (11, 'Woody', 'Toy Story'), (12, 'Indiana Jones', 'Raiders of the Lost Ark'), (13, 'Captain Jack Sparrow' , 'Pirates of the Caribbean'), (14, 'Ethan Hunt', 'Mission Impossible' ), (15, 'Ryan Stone', 'Gravity');
 
+What are the names of actors that starred in movies?
 SELECT Actor.firstname, Actor.lastname, ActorMovies.movietitle
 FROM Actor
 LEFT OUTER JOIN ActorMovies
 ON Actor.id = ActorMovies.actorid;
 
+Which actors are pairs and what is their email addresses?
 SELECT Actor.firstname, Actor.lastname, pair.email
 FROM Actor
 JOIN Actor pair
 ON Actor.pair_id = pair.id;
 
+What are each actor's names, character and movie they starred in?
 SELECT Character.fullname, ActorMovies.movietitle, Actor.firstname, Actor.lastname
 FROM Character
 JOIN ActorMovies
