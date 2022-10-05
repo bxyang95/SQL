@@ -1,0 +1,39 @@
+Which artist(s) had the most tracks in the Top 50?
+
+SELECT DISTINCT artist_name, COUNT(track_id) AS Totaltracks
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY Totaltracks desc;
+
+Who are the top 10 artists and tracks based on danceability?
+
+SELECT DISTINCT SUM(danceability), artist_name, track_name
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+LIMIT 10;
+
+Who are the top 5 artists based on popularity?
+
+SELECT popularity, artist_name
+FROM BIT_DB.Spotifydata
+ORDER BY popularity desc
+LIMIT 5;
+
+What is Olivia Rodrigo's longest and shortest songs?
+
+SELECT MAX(duration_ms), track_name
+FROM BIT_DB.Spotifydata
+WHERE artist_name = 'Olivia Rodrigo';
+
+SELECT MIN(duration_ms), track_name
+FROM BIT_DB.Spotifydata
+WHERE artist_name = 'Olivia Rodrigo';
+
+Which 5 artists had the most energetic songs? What are the titles of the songs?
+
+SELECT energy, artist_name, track_name
+FROM BIT_DB.Spotifydata
+GROUP By artist_name
+ORDER BY energy desc
+LIMIT 5;
+
